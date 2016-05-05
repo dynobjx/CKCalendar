@@ -24,6 +24,17 @@
 @property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, strong) UIColor *selectedTextColor;
 
+//Added variable (2016)
+@property (nonatomic,strong) NSMutableArray *showsForThisDate;
+@end
+
+//Added object (2016)
+@interface DateButton : UIButton
+
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) CKDateItem *dateItem;
+@property (nonatomic, strong) NSCalendar *calendar;
+@property (nonatomic,strong) NSMutableArray *showsForThisDate;
 @end
 
 typedef enum {
@@ -43,8 +54,10 @@ typedef enum {
 
 @property (nonatomic) BOOL onlyShowCurrentMonth;
 @property (nonatomic) BOOL adaptHeightToNumberOfWeeksInMonth;
-
+@property (nonatomic,assign) float desiredHeight;
 @property (nonatomic, weak) id<CKCalendarDelegate> delegate;
+
+@property (nonatomic, readonly) NSMutableArray *datesToMark;
 
 // Theming
 @property (nonatomic, strong) UIFont *titleFont;
@@ -64,6 +77,11 @@ typedef enum {
 // Helper methods for delegates, etc.
 - (BOOL)date:(NSDate *)date1 isSameDayAsDate:(NSDate *)date2;
 - (BOOL)dateIsInCurrentMonth:(NSDate *)date;
+
+//Added functions (2016)
+-(NSDate *)calendarCurrentMonth;
+- (void)calendar:(CKCalendarView *)calendar selectDates:(NSArray *)dates;
+- (void)calendar:(CKCalendarView *)calendar longPressDate:(NSDate *)date objectButton:(DateButton *)buttonObject;
 
 @end
 

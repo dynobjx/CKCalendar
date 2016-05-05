@@ -65,13 +65,13 @@
 @end
 
 
-@interface DateButton : UIButton
-
-@property (nonatomic, strong) NSDate *date;
-@property (nonatomic, strong) CKDateItem *dateItem;
-@property (nonatomic, strong) NSCalendar *calendar;
-
-@end
+//@interface DateButton : UIButton
+//
+//@property (nonatomic, strong) NSDate *date;
+//@property (nonatomic, strong) CKDateItem *dateItem;
+//@property (nonatomic, strong) NSCalendar *calendar;
+//
+//@end
 
 @implementation DateButton
 
@@ -122,7 +122,7 @@
 @end
 
 @implementation CKCalendarView
-
+@synthesize datesToMark;
 @dynamic locale;
 
 - (id)init {
@@ -650,6 +650,12 @@
     UIGraphicsEndImageContext();
 
     return coloredImg;
+}
+
+#pragma mark - Added Functions
+-(void)calendar:(CKCalendarView *)calendar selectDates:(NSArray *)dates{
+    [datesToMark removeAllObjects];
+    [datesToMark addObjectsFromArray:dates];
 }
 
 @end
