@@ -658,4 +658,8 @@
     [datesToMark addObjectsFromArray:dates];
 }
 
+-(NSDate *)calendarCurrentMonth{
+    return self.monthShowing;
+}
+
 @end
