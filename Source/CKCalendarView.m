@@ -253,7 +253,10 @@
         numberOfWeeksToShow = [self _numberOfWeeksInMonthContainingDate:self.monthShowing];
     }
     CGFloat containerHeight = (numberOfWeeksToShow * (self.cellWidth + CELL_BORDER_WIDTH) + DAYS_HEADER_HEIGHT);
-
+    if(self.desiredHeight !=0){
+        self.addHeightPerDay = (self.desiredHeight - (containerHeight + CALENDAR_MARGIN + TOP_HEIGHT))/6;
+    }
+    
     CGRect newFrame = self.frame;
     newFrame.size.height = containerHeight + CALENDAR_MARGIN + TOP_HEIGHT;
     self.frame = newFrame;

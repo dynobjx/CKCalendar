@@ -55,6 +55,8 @@ typedef enum {
 @property (nonatomic) BOOL onlyShowCurrentMonth;
 @property (nonatomic) BOOL adaptHeightToNumberOfWeeksInMonth;
 @property (nonatomic,assign) float desiredHeight;
+@property (nonatomic,assign) float addHeightPerDay;
+
 @property (nonatomic, weak) id<CKCalendarDelegate> delegate;
 
 @property (nonatomic, readonly) NSMutableArray *datesToMark;
