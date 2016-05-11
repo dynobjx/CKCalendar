@@ -60,7 +60,6 @@ typedef enum {
 @property (nonatomic, weak) id<CKCalendarDelegate> delegate;
 
 @property (nonatomic, readonly) NSMutableArray *datesToMark;
-
 // Theming
 @property (nonatomic, strong) UIFont *titleFont;
 @property (nonatomic, strong) UIColor *titleColor;
@@ -100,7 +99,7 @@ typedef enum {
 
 - (void)calendar:(CKCalendarView *)calendar didLayoutInRect:(CGRect)frame;
 
-//Added Optional functions (2016)
+//Added functions (2016)
 - (void)calendar:(CKCalendarView *)calendar longPressDate:(NSDate *)date objectButton:(DateButton *)buttonObject;
 
 @end
