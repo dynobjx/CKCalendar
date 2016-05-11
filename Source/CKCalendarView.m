@@ -211,6 +211,9 @@
         DateButton *dateButton = [DateButton buttonWithType:UIButtonTypeCustom];
         dateButton.calendar = self.calendar;
         [dateButton addTarget:self action:@selector(_dateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_dateButtonLongPressed:)];
+        [dateButton addGestureRecognizer:longPress];
+        
         [dateButtons addObject:dateButton];
     }
     self.dateButtons = dateButtons;
@@ -663,6 +666,19 @@
 
 -(NSDate *)calendarCurrentMonth{
     return self.monthShowing;
+}
+
+- (void)_dateButtonLongPressed:(UILongPressGestureRecognizer*)gesture {
+    if ( gesture.state == UIGestureRecognizerStateEnded ) {
+        DateButton *button = (DateButton *)gesture.view;
+        NSDate *date = button.date;
+        //if (![date isEqualToDate:self.selectedDate]) {
+        if([self.delegate respondsToSelector:@selector(calendar:longPressDate:objectButton:)]){
+            [self.delegate calendar:self longPressDate:date objectButton:button];
+        }
+        //}
+        [self setNeedsLayout];
+    }
 }
 
 @end

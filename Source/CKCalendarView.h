@@ -83,7 +83,6 @@ typedef enum {
 //Added functions (2016)
 -(NSDate *)calendarCurrentMonth;
 - (void)calendar:(CKCalendarView *)calendar selectDates:(NSArray *)dates;
-- (void)calendar:(CKCalendarView *)calendar longPressDate:(NSDate *)date objectButton:(DateButton *)buttonObject;
 
 @end
 
@@ -100,5 +99,8 @@ typedef enum {
 - (void)calendar:(CKCalendarView *)calendar didChangeToMonth:(NSDate *)date;
 
 - (void)calendar:(CKCalendarView *)calendar didLayoutInRect:(CGRect)frame;
+
+//Added Optional functions (2016)
+- (void)calendar:(CKCalendarView *)calendar longPressDate:(NSDate *)date objectButton:(DateButton *)buttonObject;
 
 @end
