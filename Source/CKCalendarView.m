@@ -359,12 +359,14 @@
             markerHolders.tag = 888;
             markerHolders.userInteractionEnabled = NO;
             for (int x=0; x < [item.showsForThisDate count]; x++) {
+                NSDictionary *show = item.showsForThisDate[x];
+                BOOL isDarkShow = [[show objectForKey:@"is_dark_day"] boolValue];
                 //                UIImageView *marker=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"marker.png"]];
                 //                [marker setFrame:CGRectMake(dateButton.frame.origin.x + 5.0 + (marker.frame.size.width + 5 * x), dateButton.frame.origin.y + (dateButton.frame.size.height - 8.0), marker.frame.size.width, marker.frame.size.height)];
                 
                 UIImageView *marker=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"marker.png"]];
                 [marker setFrame:CGRectMake(5.0 + (marker.frame.size.width + 5 * x),dateButton.frame.size.height - 8.0, marker.frame.size.width, marker.frame.size.height)];
-                
+                marker.alpha = isDarkShow ? 0.5 : 1.0;
                 [markerHolders addSubview:marker];
                 //                [dateButton setBackgroundColor:[UIColor redColor]];
                 //                [dateButton addSubview:marker];
